@@ -50,7 +50,6 @@ group :development do
   # Debug tools
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'debug_inspector'
 end
 
 group :test do

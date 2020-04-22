@@ -29,18 +29,5 @@ Style/Documentation:
 Style/Lambda:
   Enabled: false
 
-# rescueの一行表記を可能とする
-Style/RescueModifier:
-  Enabled: false
-
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-Metrics/AbcSize:
-  Max: 50
-
-Metrics/MethodLength:
-  Max: 30
-
-Metrics/LineLength:
-  Max: 100
