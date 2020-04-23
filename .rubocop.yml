@@ -1,0 +1,33 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7.0
+  Exclude:
+    - 'Gemfile.lock'
+    - 'db/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'tmp/**/*'
+    - 'test/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+
+# 日本語入力を可能にする
+Style/AsciiComments:
+  Enabled: false
+
+# クラス説明を記述しない
+Style/Documentation:
+  Enabled: false
+
+# 複数ラインの場合、lambdaメソッドを強制しない
+Style/Lambda:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
