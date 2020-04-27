@@ -55,5 +55,10 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+  end
+
+  BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
 end
