@@ -1,4 +1,3 @@
-# == Schema Information
 #
 # Table name: issues
 #
@@ -15,4 +14,7 @@
 #
 class Issue < ApplicationRecord
   belongs_to :category
+
+  validates :title, presence: true
+  validates :text, presence: true
 end

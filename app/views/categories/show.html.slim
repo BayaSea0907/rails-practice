@@ -1,0 +1,19 @@
+h1
+  = @category.name
+hr
+
+- flash.each do |key, value|
+  = content_tag :div, value, class: key, style: 'color: red'
+
+p
+  = @category.description ? @category.description : '説明未登録'
+p
+  = link_to 'カテゴリ説明編集', edit_category_path(@category.id)
+
+- @category.issues.each do |issue|
+  ul
+    li
+      = issue.title
+
+hr
+= link_to '戻る', issues_path

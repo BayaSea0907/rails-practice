@@ -13,4 +13,7 @@
 #  index_categories_on_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
+  has_many :issues, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: true
 end
