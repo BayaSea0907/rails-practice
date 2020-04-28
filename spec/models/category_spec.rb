@@ -15,5 +15,11 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'カテゴリの説明更新ページ' do
+    let(:category) { described_class.create(name: 'A', description: nil) }
+
+    it '更新に成功すること' do
+      expect(category.update(description: '説明文')).to eq true
+    end
+  end
 end

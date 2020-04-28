@@ -33,5 +33,14 @@ Style/Lambda:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# Controller処理で引っかからないために追加
 Layout/LineLength:
   Max: 100
+
+# RSpecのModel指定で引っかからないために追加
+Metrics/BlockLength:
+  Max: 50
+
+# contextを日本語で書きたいため追加
+RSpec/ContextWording:
+  Enabled: false

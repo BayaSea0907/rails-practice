@@ -4,9 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    category = Category.find(params[:id])
-
-    if category.update(category_params)
+    if Category.update(category_params)
       redirect_to category, flash: { notice: '更新に成功しました' }
     else
       flash.now[:alert] = '更新に失敗しました'
