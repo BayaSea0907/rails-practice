@@ -1,0 +1,11 @@
+h1
+  = @issue.title
+
+- flash.each do |key, value|
+  = content_tag :div, value, class: key, style: 'color: red'
+
+p
+  = @issue.text
+
+hr
+= link_to '戻る', issues_path

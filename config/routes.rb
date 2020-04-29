@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'issues#index'
+
+  resources :issues, only: %i(new create show index)
+  resources :categories, only: %i(edit update show)
 end
