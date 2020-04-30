@@ -16,7 +16,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   describe 'カテゴリの説明更新ページ' do
-    let(:category) { described_class.create(name: 'A', description: nil) }
+    let(:category) { create(:category) }
 
     it '更新に成功すること' do
       expect(category.update(description: '説明文')).to eq true

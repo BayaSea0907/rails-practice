@@ -16,8 +16,15 @@
 require 'rails_helper'
 
 RSpec.describe Issue, type: :model do
+  # before do
+  #   # ファクトリーボットの生成
+  #   @category = create(:category)
+  #   @user = build(:user, category: @category)
+  #   # @user = build(:user, category_id: @category.id)
+  # end
+
   describe 'イシュー登録ページ' do
-    let(:category) { Category.new(name: 'A', description: nil) }
+    let(:category) { build(:category) }
 
     context '新規カテゴリ名が入力された場合' do
       it '登録できること' do
@@ -27,10 +34,8 @@ RSpec.describe Issue, type: :model do
     end
 
     context '既存のカテゴリ名が入力された場合' do
-      let(:category) { Category.new(name: 'A', description: nil) }
-
       before do
-        Category.create(name: 'A')
+        create(:category)
       end
 
       it 'カテゴリ登録は失敗すること' do
@@ -45,7 +50,6 @@ RSpec.describe Issue, type: :model do
     end
 
     context '空の入力値がある場合' do
-      let(:category) { Category.create(name: 'A', description: nil) }
       let(:issue) { category.issues.new }
 
       it 'タイトル未入力で失敗すること' do
