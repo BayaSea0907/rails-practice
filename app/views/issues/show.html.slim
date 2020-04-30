@@ -1,9 +1,10 @@
-h1
+- content_for :title do
+  課題詳細
+
+h2
   = @issue.title
-
-- flash.each do |key, value|
-  = content_tag :div, value, class: key, style: 'color: red'
-
+p
+  = @issue.category.name
 p
   = @issue.text
 

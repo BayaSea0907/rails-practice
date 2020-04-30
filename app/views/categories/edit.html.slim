@@ -1,9 +1,5 @@
-h1
-  | カテゴリ編集
-hr
-
-- flash.each do |key, value|
-  = content_tag :div, value, class: key, style: 'color: red'
+- content_for :title do
+  カテゴリ編集
 
 h2
   = @category.name

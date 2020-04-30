@@ -1,12 +1,11 @@
-h1
-  = @category.name
-hr
+- content_for :title do
+  カテゴリ一覧
 
-- flash.each do |key, value|
-  = content_tag :div, value, class: key, style: 'color: red'
+h2
+  = @category.name
 
 p
-  = @category.description ? @category.description : '説明未登録'
+  = @category.description || '説明未登録'
 p
   = link_to 'カテゴリ説明編集', edit_category_path(@category.id)
 

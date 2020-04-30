@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def update
     if Category.update(category_params)
-      redirect_to category, flash: { notice: '更新に成功しました' }
+      redirect_to category_path, flash: { notice: '更新に成功しました' }
     else
       flash.now[:alert] = '更新に失敗しました'
       render :edit

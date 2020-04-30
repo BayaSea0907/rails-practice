@@ -1,6 +1,5 @@
-h1
-  | 課題管理
-hr
+- content_for :title do
+  課題管理
 
 p
   = link_to '新規登録', new_issue_path
@@ -14,5 +13,7 @@ p
       - category.issues.each do |issue|
         ul
           li
-            - text = issue.title + ' ' + issue.created_at.in_time_zone('Tokyo').strftime('%Y/%-m/%-d')
-            = link_to text, issue_path(issue.id)
+            = link_to issue.title, issue_path(issue.id)
+          ul
+            li
+              = l(issue.created_at.in_time_zone('Tokyo'), format: :date)

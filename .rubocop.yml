@@ -15,8 +15,7 @@ AllCops:
     - 'test/**/*'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
+    - 'spec/**/*.rb'
 
 # 日本語入力を可能にする
 Style/AsciiComments:
@@ -36,11 +35,3 @@ Style/FrozenStringLiteralComment:
 # Controller処理で引っかからないために追加
 Layout/LineLength:
   Max: 100
-
-# RSpecのModel指定で引っかからないために追加
-Metrics/BlockLength:
-  Max: 50
-
-# contextを日本語で書きたいため追加
-RSpec/ContextWording:
-  Enabled: false
