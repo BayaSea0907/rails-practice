@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text(65535)
-#  name        :string(255)      not null
+#  name        :string(50)       not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -15,11 +15,22 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  describe 'カテゴリの説明更新ページ' do
-    let(:category) { create(:category) }
+  describe 'validation' do
+    subject(:category) { create(:category) }
 
     it '更新に成功すること' do
-      expect(category.update(description: '説明文')).to eq true
+      category.description = '説明文'
+      is_expected.to be_valid
+    end
+
+    it 'カテゴリ名の文字数制限で更新に失敗すること' do
+      category.name = 'x' * 51
+      is_expected.to be_invalid
+    end
+
+    it '説明文の文字数制限で更新に失敗すること' do
+      category.description = 'x' * 501
+      is_expected.to be_invalid
     end
   end
 end

@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  text        :text(65535)      not null
-#  title       :string(255)      not null
+#  title       :string(100)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :bigint           not null
@@ -16,51 +16,48 @@
 require 'rails_helper'
 
 RSpec.describe Issue, type: :model do
-  # before do
-  #   # ファクトリーボットの生成
-  #   @category = create(:category)
-  #   @user = build(:user, category: @category)
-  #   # @user = build(:user, category_id: @category.id)
-  # end
-
-  describe 'イシュー登録ページ' do
-    let(:category) { build(:category) }
+  describe 'validation' do
+    let(:category) { create(:category) }
+    subject(:issue) { build(:issue, category: category) }
 
     context '新規カテゴリ名が入力された場合' do
       it '登録できること' do
-        category.issues.new(title: 'タイトル', text: 'テキスト', category: category)
-        expect(category.save).to eq true
+        is_expected.to be_valid
       end
     end
 
     context '既存のカテゴリ名が入力された場合' do
-      before do
-        create(:category)
-      end
-
       it 'カテゴリ登録は失敗すること' do
-        expect(category.save).to eq false
+        create(:category)
+        category = build(:category)
+
+        expect(category).to be_invalid
       end
 
       it 'イシューは登録できること' do
-        category = Category.find_by(name: 'A')
-        category.issues.new(title: 'タイトル', text: 'テキスト')
-        expect(category.save).to eq true
+        issue.category = Category.find_by(name: 'A')
+        is_expected.to be_valid
       end
     end
 
-    context '空の入力値がある場合' do
-      let(:issue) { category.issues.new }
+    it 'タイトル未入力で失敗すること' do
+      issue.title = nil
+      is_expected.to be_invalid
+    end
 
-      it 'タイトル未入力で失敗すること' do
-        issue.update(title: nil, text: 'テキスト')
-        expect(issue.errors[:title].present?).to eq true
-      end
+    it 'タイトル文字数制限で失敗すること' do
+      issue.title= 'x' * 101
+      is_expected.to be_invalid
+    end
 
-      it 'テキスト未入力で失敗すること' do
-        issue.update(title: 'タイトル', text: nil)
-        expect(issue.errors[:text].present?).to eq true
-      end
+    it 'テキスト未入力で失敗すること' do
+      issue.text = nil
+      is_expected.to be_invalid
+    end
+
+    it 'テキスト文字数制限で失敗すること' do
+      issue.text = 'x' * 1001
+      is_expected.to be_invalid
     end
   end
 end

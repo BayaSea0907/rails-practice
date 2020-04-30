@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text(65535)
-#  name        :string(255)      not null
+#  name        :string(50)       not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -15,5 +15,6 @@
 class Category < ApplicationRecord
   has_many :issues, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, uniqueness: true, presence: true, length: { maximum: 50 }
+  validates :description, length: { maximum: 500 }
 end
