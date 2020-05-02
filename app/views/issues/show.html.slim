@@ -1,0 +1,12 @@
+- content_for :title do
+  課題詳細
+
+h2
+  = @issue.title
+p
+  = @issue.category.name
+p
+  = @issue.text
+
+hr
+= link_to '戻る', issues_path

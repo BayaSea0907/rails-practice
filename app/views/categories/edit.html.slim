@@ -1,0 +1,14 @@
+- content_for :title do
+  カテゴリ編集
+
+h2
+  = @category.name
+
+= form_with model: @category, local: true do |f|
+  p
+    = f.text_area :description, placeholder: '500文字以内', size: '50x10'
+  p
+    = f.submit '更新'
+
+hr
+= link_to '戻る', category_path(@category.id)
