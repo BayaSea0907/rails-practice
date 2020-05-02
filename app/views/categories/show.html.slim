@@ -1,0 +1,18 @@
+- content_for :title do
+  カテゴリ一覧
+
+h2
+  = @category.name
+
+p
+  = @category.description || '説明未登録'
+p
+  = link_to 'カテゴリ説明編集', edit_category_path(@category.id)
+
+- @category.issues.each do |issue|
+  ul
+    li
+      = issue.title
+
+hr
+= link_to '戻る', issues_path

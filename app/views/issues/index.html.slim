@@ -1,0 +1,19 @@
+- content_for :title do
+  課題管理
+
+p
+  = link_to '新規登録', new_issue_path
+
+- @categories.each do |category|
+  ul
+    li
+      h2
+        = link_to category.name, category_path(category.id)
+
+      - category.issues.each do |issue|
+        ul
+          li
+            = link_to issue.title, issue_path(issue.id)
+          ul
+            li
+              = l(issue.created_at.in_time_zone('Tokyo'), format: :date)
