@@ -5,7 +5,7 @@
    * `bundle install`
 3. MySQLのインストール (自前のiMacにインストールしたことがなかったので)
    * `brew install mysql`
-   * `$ mysql.server start`
+   * `mysql.server start`
 4. データベース、テーブル生成
    * `bundle exec rails db:prepare`
    * `bundle exec rails db:migrate`
