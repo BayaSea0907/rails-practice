@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'sorcery', '0.15.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -40,6 +42,7 @@ group :development do
 
   gem 'annotate'
   gem 'bullet'
+  gem 'enumerize'
 
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
