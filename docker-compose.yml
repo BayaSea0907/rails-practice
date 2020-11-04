@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:latest
+    command: mysqld --character-set-server=utf8mb4
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+        - 127.0.0.1:3306:3306

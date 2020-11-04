@@ -3,9 +3,8 @@
    * `rbenv local 2.7.0`
 2. Gemのインストール
    * `bundle install`
-3. MySQLのインストール (自前のiMacにインストールしたことがなかったので)
-   * `brew install mysql`
-   * `mysql.server start`
+3. MySQLのコンテナ起動
+   * `docker-compose up`
 4. データベース、テーブル生成
    * `bundle exec rails db:prepare`
    * `bundle exec rails db:migrate`
